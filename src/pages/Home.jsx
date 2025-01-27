@@ -2,7 +2,8 @@
     return (
 
         <div>
-        Home
+
+        <h1>What shall we eat today?</h1>
         </div>
     )
 

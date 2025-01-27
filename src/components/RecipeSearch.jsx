@@ -1,22 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const RecipeSearch = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(''); // This defines 'query' and 'setQuery'
   const [recipes, setRecipes] = useState([]);
 
-  const handleSearch = async () => {
-    if (!query) return;
 
-    const apiKey = 'YOUR_SPOONACULAR_API_KEY';
-    const url = `https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${apiKey}`;
+  const handleSearch = async () => {
+    if (!query) return; // Prevent search if query is empty
+
+    const apiKey = '1b51a82d73074cc583198a8ccf773be4';
+    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${query}&addRecipeInformation=true`;
+
+
 
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setRecipes(data.results);
+      console.log(data);
+      setRecipes(data.results); // Assuming response has 'results' for the recipes
     } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+      console.error('Error fetching recipes:', error);
+    } 
   };
 
   return (
@@ -26,20 +30,28 @@ const RecipeSearch = () => {
         type="text"
         placeholder="Enter ingredients"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => setQuery(e.target.value)} // Set query when user types
       />
       <button onClick={handleSearch}>Search</button>
 
-     
-        <ul>
-          {recipes.map((recipe) => (
-            <li key={recipe.id}>
-              <h2>{recipe.title}</h2>
-              <img src={recipe.image} alt={recipe.title} />
-            </li>
-          ))}
-        </ul>
-      
+ 
+
+      <ul>
+        {recipes.map((recipe) => (
+          <li key={recipe.id}>
+            <h2>{recipe.title}</h2>
+            <img src={recipe.image} />
+           
+            <p>Preparation Time: {recipe.readyInMinutes}</p>
+            <p>Servings: {recipe.servings}</p>
+            <p>
+            <a href={recipe.sourceUrl} target="_blank" >
+                 {recipe.sourceUrl}
+            </a>
+            </p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

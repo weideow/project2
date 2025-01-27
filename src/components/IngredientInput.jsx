@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const IngredientInput = () => {
   const [ingredients, setIngredients] = useState('');
@@ -35,7 +35,7 @@ const IngredientInput = () => {
           {recipes.map((recipe) => (
             <li key={recipe.id}>
               <h2>{recipe.title}</h2>
-              <img src={recipe.image}   />
+              <img src={recipe.image}/>
             </li>
           ))}
         </ul>
