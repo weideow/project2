@@ -1,38 +1,39 @@
+// RecipeList.jsx
 import { useState } from 'react';
 
 const RecipeSearch = () => {
-  const [query, setQuery] = useState(''); // This defines 'query' and 'setQuery'
+
   const [recipes, setRecipes] = useState([]);
+ 
 
-
-  const handleSearch = async () => {
-    if (!query) return; // Prevent search if query is empty
+  const handleSearch = async (query) => {
+    if (!query) return; // Do not search if query is empty
 
     const apiKey = '1b51a82d73074cc583198a8ccf773be4';
     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${query}&addRecipeInformation=true`;
 
-
-
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
-      setRecipes(data.results); // Assuming response has 'results' for the recipes
+      setRecipes(data.results); // Update the recipes state with the fetched data
     } catch (error) {
       console.error('Error fetching recipes:', error);
     } 
+   
   };
 
+  handleSearch();
+ 
   return (
     <div>
-      <h1>Search Recipes</h1>
-      <input
+      {/* <h1>Search Recipes</h1> */}
+      {/* <input
         type="text"
         placeholder="Enter ingredients"
-        value={query}
+        // value={query} //does not change the query directly
         onChange={(e) => setQuery(e.target.value)} // Set query when user types
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch}>Search</button> */}
 
  
 

@@ -1,4 +1,6 @@
-import RecipeSearch from "../components/RecipeSearch";
+//RecipePage.jsx
+
+import RecipeSearch from "../components/RecipeList";
 import { useState } from 'react';
 
 const RecipeSearchPage = () => {
@@ -10,12 +12,12 @@ const RecipeSearchPage = () => {
   
     const handleSearchSubmit = (e) => {
       e.preventDefault();
-      // Perform search logic, or pass the search term to the RecipeSearch component
+      
     };
   
     return (
       <div>
-        <h2>Search Recipes</h2>
+        <h1>Search Recipes</h1>
         <form onSubmit={handleSearchSubmit}>
           <input
             type="text"
