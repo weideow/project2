@@ -9,15 +9,7 @@ const RecipeSearchPage = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleSearchSubmit = async (e) => {
-    e.preventDefault();
 
-    // Call fetchRecipes only when the form is submitted
-    if (searchTerm) {
-      const fetchedRecipes = await fetchRecipes(searchTerm);
-      setRecipes(fetchedRecipes);
-    }
-  };
 
   // Function to fetch recipes (this is now inside the component)
   const fetchRecipes = async (query) => {
@@ -31,8 +23,19 @@ const RecipeSearchPage = () => {
     } catch (error) {
       console.error('Error fetching recipes:', error);
       return [];
-    }
-  };
+    };
+  }
+    const handleSearchSubmit = async (e) => {
+      e.preventDefault();
+  
+      // Call fetchRecipes only when the form is submitted
+      if (searchTerm) {
+        const fetchedRecipesList = await fetchRecipes(searchTerm);
+        setRecipes(fetchedRecipesList);
+      }
+    };
+
+
 
   return (
     <div>

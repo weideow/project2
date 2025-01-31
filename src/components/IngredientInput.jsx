@@ -1,47 +1,22 @@
-import { useState } from 'react';
-
-const IngredientInput = () => {
-  const [ingredients, setIngredients] = useState('');
-  const [recipes, setRecipes] = useState([]);
-
-  const handleSearch = async () => {
-    if (!ingredients) return;
-
-    const apiKey = 'YOUR_SPOONACULAR_API_KEY';
-    const url = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setRecipes(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
+const IngredientSearch = ({ ingredient }) => {
   return (
     <div>
-      <h1>Enter Ingredients</h1>
-      <input
-        type="text"
-        placeholder="Enter ingredients (comma separated)"
-        value={ingredients}
-        onChange={(e) => setIngredients(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
-
-    
-        <ul>
-          {recipes.map((recipe) => (
-            <li key={recipe.id}>
-              <h2>{recipe.title}</h2>
-              <img src={recipe.image}/>
+      <ul>
+        {ingredient.length > 0 ? (
+          ingredient.map((ingredients) => (
+            <li key={ingredients.id}>
+              <h2>{ingredients.name}</h2>
+              <p>
+              {/* <img src={ingredients.image} /> */}
+              </p>
             </li>
-          ))}
-        </ul>
-      
+          ))
+        ) : (
+          <p>No ingredient found.</p>
+        )}
+      </ul>
     </div>
   );
 };
 
-export default IngredientInput;
+export default IngredientSearch;
