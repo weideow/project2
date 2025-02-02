@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import RecipeSearchPage from './pages/RecipePage';
-import IngredientPage from './pages/IngredientPage';
+import IngredientPage from './pages/CurrentIngredient';
 
 const App = () => {
   return (
