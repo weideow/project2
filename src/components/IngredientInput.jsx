@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+// IngredientInput.jsx
+
+import { useState } from "react";
 
 const token = 'patki52lS0oVzwcUT.4d184b8ceaea3b5b3fbfc9639ee0ab1c8c1510b647f4d874a3f9f970a4227250';
 
@@ -52,7 +54,7 @@ function IngredientSearch({ ingredient }) {
             </li>
           ))
         ) : (
-          <p>No ingredient found.</p>
+          <p></p>
         )}
       </ul>
     </div>
