@@ -23,10 +23,13 @@ generated recipe to help out!
 
 **Let's Get Started!**
 
-![Screenshots]
+Screenshots
 
 - Recipe Search
-(/Recipesearch.png)
+![Screenshots](/Recipesearch.png)
+
+
+
 
 - Ingredient List
 (/Ingredientinventory.png)
