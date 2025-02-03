@@ -1,7 +1,6 @@
-// CurrentIngredient.jsx
-
 import { useState, useEffect } from 'react';
 import IngredientSearch from '../components/IngredientInput';
+import DeleteButton from '../components/Deletebutton';
 
 const IngredientPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,14 +21,14 @@ const IngredientPage = () => {
           },
         });
         const data = await response.json();
-        setAirtableIngredients(data.records || []);
+        setAirtableIngredients(data.records);
       } catch (error) {
         console.error('Error fetching Airtable ingredients:', error);
       }
     };
 
     fetchAirtableIngredients();
-  }, []);
+  }, [airtableIngredients]);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -42,7 +41,7 @@ const IngredientPage = () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      return data.results || [];
+      return data.results;
     } catch (error) {
       console.error('Error fetching ingredients:', error);
       return [];
@@ -57,7 +56,6 @@ const IngredientPage = () => {
     }
   };
 
-  // Function to remove an ingredient from Airtable
   const removeIngredientFromAirtable = async (ingredientId) => {
     const deleteUrl = `https://api.airtable.com/v0/appHMbk1LeVWZTeRN/Table%201/${ingredientId}`;
 
@@ -104,14 +102,15 @@ const IngredientPage = () => {
         {airtableIngredients.length > 0 ? (
           airtableIngredients.map((ingredient) => (
             <li key={ingredient.id}>
-              <h3>{ingredient.fields.Name}</h3>
-              <button onClick={() => removeIngredientFromAirtable(ingredient.id)}>
-                Remove
-              </button>
+              <h4>{ingredient.fields.Name}</h4>
+              <DeleteButton 
+                ingredientId={ingredient.id} 
+                removeIngredient={removeIngredientFromAirtable} 
+              />
             </li>
           ))
         ) : (
-          <p>No ingredients found in Airtable.</p>
+          <p>No ingredients found</p>
         )}
       </ul>
     </div>

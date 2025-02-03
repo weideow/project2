@@ -7,7 +7,8 @@ function Navbar() {
         <div id="nav-links">
           <Link to="/">Home</Link>
           <Link to="/search">Search</Link>
-          <Link to='/ingredients'>Ingredients</Link>
+          <Link to='/ingredients'>Inventory</Link>
+          <Link to='/random'>Surprise Me!</Link>
         </div>
       </nav>
     );

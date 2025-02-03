@@ -3,7 +3,7 @@
 
         <div>
 
-        <h1>What shall we eat today?</h1>
+        <h1>Today eat what?</h1>
         </div>
     )
 

@@ -5,7 +5,7 @@ import { useState } from "react";
 const token = 'patki52lS0oVzwcUT.4d184b8ceaea3b5b3fbfc9639ee0ab1c8c1510b647f4d874a3f9f970a4227250';
 
 function IngredientSearch({ ingredient }) {
-  const [isCurrent, setIsCurrent] = useState(false);
+  const [addedIngredientId, setAddedIngredientId] = useState(null);
 
   const postAirtable = async (ingredientName, ingredientId) => {
     const airUrl = 'https://api.airtable.com/v0/appHMbk1LeVWZTeRN/Table%201';
@@ -29,7 +29,7 @@ function IngredientSearch({ ingredient }) {
       if (response.ok) {
         const data = await response.json();
         console.log("Ingredient added to Airtable:", data);
-        setIsCurrent(true);
+        setAddedIngredientId(true);
       } else {
         console.error("Error adding ingredient:", response.statusText);
       }
@@ -42,14 +42,14 @@ function IngredientSearch({ ingredient }) {
     <div>
       <ul>
         {ingredient.length > 0 ? (
-          ingredient.map((ingredients) => (
+          ingredient.map((ingredients) => ( 
             <li key={ingredients.id}>
               <h2>{ingredients.name}</h2>
               <p>
                 {/* <img src={ingredients.image} /> */}
               </p>
               <button onClick={() => postAirtable(ingredients.name, ingredients.id)}>
-                {isCurrent ? 'Ingredient Added!' : 'Add to Airtable'}
+              {addedIngredientId === ingredients.id ? 'Ingredient Added!' : 'Add'}
               </button>
             </li>
           ))

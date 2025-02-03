@@ -11,7 +11,7 @@ const RecipeSearchPage = () => {
 
 
 
-  // Function to fetch recipes (this is now inside the component)
+
   const fetchRecipes = async (query) => {
     const apiKey = 'db9d359500414b32a111e5f38326f191';
     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}&addRecipeInformation=true`;
@@ -19,7 +19,7 @@ const RecipeSearchPage = () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      return data.results || []; // Return the fetched recipes
+      return data.results; // Return the fetched recipes
     } catch (error) {
       console.error('Error fetching recipes:', error);
       return [];
