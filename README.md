@@ -35,7 +35,7 @@ generated recipe to help out!
 ![Screenshots](/Ingredientinventory.png)
 
 - Random Recipe
-![Screenshots](/Randonmrecipe.png)
+![Screenshots](/Randonrecipe.png)
 
 **WireFrame**
 
