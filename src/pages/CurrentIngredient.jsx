@@ -12,7 +12,10 @@ const IngredientPage = () => {
 
   useEffect(() => {
     const fetchAirtableIngredients = async () => {
-      if (!query) return; // Don't fetch results if there's no query
+      // if (!query) {return}; having this prevents endless fetch, however, it prevents fetch from airtable
+
+   
+      // Don't fetch results if there's no query
       try {
         const response = await fetch(airUrl, {
           method: 'GET',
@@ -23,12 +26,14 @@ const IngredientPage = () => {
         });
         const data = await response.json();
         setAirtableIngredients(data.records);
+ 
       } catch (error) {
         console.error('Error fetching Airtable ingredients:', error);
       }
     };
 
     fetchAirtableIngredients();
+    
   }, [airtableIngredients]);
 
   const handleSearchChange = (e) => {
