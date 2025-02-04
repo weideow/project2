@@ -9,9 +9,6 @@ const RecipeSearchPage = () => {
     setSearchTerm(e.target.value);
   };
 
-
-
-
   const fetchRecipes = async (query) => {
     const apiKey = 'db9d359500414b32a111e5f38326f191';
     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}&addRecipeInformation=true`;
@@ -34,8 +31,6 @@ const RecipeSearchPage = () => {
         setRecipes(fetchedRecipesList);
       }
     };
-
-
 
   return (
     <div>

@@ -12,6 +12,7 @@ const IngredientPage = () => {
 
   useEffect(() => {
     const fetchAirtableIngredients = async () => {
+      if (!query) return; // Don't fetch results if there's no query
       try {
         const response = await fetch(airUrl, {
           method: 'GET',
