@@ -10,7 +10,7 @@ Currently, two official plugins are available:
 *****Today Eat What*****
 Easy access site for your daily meal preps!
 
-Start Planning today https://67a14d66ffd33b00a7d9219a--whatweeattoday.netlify.app/
+Start Planning today http://127.0.0.1:5173/
 
 ****Description****
 Today Eat What is a site meant to help you decide what dishes to make today. Users can easily organize the ingredients
